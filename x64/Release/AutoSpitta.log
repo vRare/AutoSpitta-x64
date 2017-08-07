@@ -1,0 +1,15 @@
+﻿  Building 'AutoSpitta' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Release\AutoSpitta.inf [Version] section with DriverVer=06/23/2016,22.33.45.295
+  AutoSpitta.vcxproj -> C:\Users\johnlaw\Desktop\AutoSpitta\x64\Release\AutoSpitta.sys
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018: The "SignTask" task failed unexpectedly.
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018: System.Security.Cryptography.CryptographicException: Object already exists.
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018: 
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Shared.CreateCertificate.CryptAcquireContext(String keyContainerName, String providerName, PROV providerType)
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Shared.CreateCertificate.CreateSelfSignedCertificate()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Tasks.SignTask.AutoGenerateTestCertificate()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Tasks.SignTask.AutoPickTestCertificate()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Tasks.SignTask.GenerateCommandLineCommands()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.Build.Utilities.ToolTask.Execute()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.DriverKit.Build.Tasks.TrackedVCToolTask.Execute()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskExecutionHost.Microsoft.Build.BackEnd.ITaskExecutionHost.Execute()
+C:\Program Files (x86)\Windows Kits\10\build\WindowsDriver.common.targets(1348,5): error MSB4018:    at Microsoft.Build.BackEnd.TaskBuilder.<ExecuteInstantiatedTask>d__26.MoveNext()

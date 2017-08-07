@@ -1,0 +1,93 @@
+;
+; AutoSpitta.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Sample ; TODO: edit Class
+ClassGuid={78A1C341-4539-11d3-B88D-00C04FAD5171} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=AutoSpitta.cat
+DriverVer=06/23/2016,22.33.45.295
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+[ClassInstall32]
+Addreg=SampleClassReg
+
+[SampleClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+AutoSpitta.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%AutoSpitta.DeviceDesc%=AutoSpitta_Device, Root\AutoSpitta ; TODO: edit hw-id
+
+[AutoSpitta_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+AutoSpitta.sys
+
+;-------------- Service installation
+[AutoSpitta_Device.NT.Services]
+AddService = AutoSpitta,%SPSVCINST_ASSOCSERVICE%, AutoSpitta_Service_Inst
+
+; -------------- AutoSpitta driver install sections
+[AutoSpitta_Service_Inst]
+DisplayName    = %AutoSpitta.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\AutoSpitta.sys
+
+;
+;--- AutoSpitta_Device Coinstaller installation ------
+;
+
+[DestinationDirs]
+AutoSpitta_Device_CoInstaller_CopyFiles = 11
+
+[AutoSpitta_Device.NT.CoInstallers]
+AddReg=AutoSpitta_Device_CoInstaller_AddReg
+CopyFiles=AutoSpitta_Device_CoInstaller_CopyFiles
+
+[AutoSpitta_Device_CoInstaller_AddReg]
+;
+
+
+[AutoSpitta_Device_CoInstaller_CopyFiles]
+;
+
+
+[SourceDisksFiles]
+;
+
+
+[AutoSpitta_Device.NT.Wdf]
+KmdfService =  AutoSpitta, AutoSpitta_wdfsect
+[AutoSpitta_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+ClassName="Samples" ; TODO: edit ClassName
+DiskName = "AutoSpitta Installation Disk"
+AutoSpitta.DeviceDesc = "AutoSpitta Device"
+AutoSpitta.SVCDESC = "AutoSpitta Service"
